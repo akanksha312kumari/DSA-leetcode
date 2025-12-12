@@ -1,0 +1,34 @@
+import java.util.Arrays;
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        // Convert both strings to lowercase so we ignore case differences
+        String str1 = s.toLowerCase();
+        String str2 = t.toLowerCase();
+
+        // Variable to store final answer (true = anagram, false = not anagram)
+        boolean ans = false;
+
+        // Step 1: If lengths are different, they cannot be anagrams
+        if (s.length() == t.length()) {
+
+            // Step 2: Convert both strings to character arrays
+            // Example: "listen" -> ['l','i','s','t','e','n']
+            char[] charArr1 = str1.toCharArray();
+            char[] charArr2 = str2.toCharArray();
+
+            // Step 3: Sort both character arrays alphabetically
+            // Example: ['l','i','s','t','e','n'] -> ['e','i','l','n','s','t']
+            Arrays.sort(charArr1);
+            Arrays.sort(charArr2);
+
+            // Step 4: Compare sorted arrays
+            // If both arrays are identical, then the strings are anagrams
+            ans = Arrays.equals(charArr2, charArr1);
+        }
+
+        // Return the final result
+        return ans;
+    }
+}
