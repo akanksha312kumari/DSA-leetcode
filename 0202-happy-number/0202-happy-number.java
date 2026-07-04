@@ -4,10 +4,8 @@ class Solution {
         int fast = square(square(n));
 
         while (slow!=fast ){
-            
             slow = square(slow);
             fast = square(square(fast));
-
             if (slow == 1 || fast == 1){
                 return true;
             }
