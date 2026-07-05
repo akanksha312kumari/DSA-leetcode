@@ -1,0 +1,27 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int n = nums.length;
+        int[] prefix = new int[n];
+
+        prefix[0] = nums[0];
+        for (int i = 1; i < n; i++){
+            prefix[i] = prefix[i-1] + nums[i];
+        } 
+
+        int ls = 0;
+        int rs = prefix[n-1] - prefix[0];
+        if (ls == rs){
+            return 0;
+        }
+
+        for (int i = 1; i < n; i++){
+            ls = prefix[i-1];
+            rs = prefix[n-1] - prefix[i];
+            if (ls == rs){
+                return i;
+            }
+        }
+        return -1;
+
+    }
+}
