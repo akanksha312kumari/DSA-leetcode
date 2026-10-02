@@ -1,21 +1,24 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int largest = Integer.MIN_VALUE;
-        for (int i=0; i<nums.length; i++){
-            largest = Math.max(largest, nums[i]);
-        }
+        //Dutch Natinal Flag Algorithm
+        int mid = 0;
+        int low = 0;
+        int high = nums.length-1;
 
-        int countArr[] = new int[largest+1];
-        for (int i=0; i<nums.length; i++){
-            countArr[nums[i]]++;
-        }
-
-        int j=0;
-        for (int i=0; i<countArr.length; i++){
-            while (countArr[i]>0){
-                nums[j] = i;
-                j++;
-                countArr[i]--;
+        while (mid <= high){
+            if (nums[mid] == 0){
+                //swap with low
+                nums[mid] = nums[low];
+                nums[low] = 0;
+                mid++; low++;
+            }
+            else if (nums[mid] == 1){
+                mid++;
+            }
+            else {
+                nums[mid] = nums[high];
+                nums[high] = 2;
+                high--;
             }
         }
 
