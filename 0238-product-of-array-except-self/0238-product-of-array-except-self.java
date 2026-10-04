@@ -2,6 +2,7 @@ class Solution {
     public int[] productExceptSelf(int[] nums) {
         int[] ans = new int[nums.length];
 
+        //calculate prefix at each step and store it in ans
         int prefix = 1;
         ans[0] = 1;
         for (int i = 1; i < nums.length; i++){
@@ -9,6 +10,7 @@ class Solution {
             ans[i] = prefix;
         }
 
+        //calculate suffix at each step and multiply with previous values of ans
         int suffix = 1;
         for (int j = nums.length-2; j >= 0; j--){
             suffix = suffix * nums[j+1];
